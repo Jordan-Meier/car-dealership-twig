@@ -63,6 +63,14 @@
 
     });
 
+    $app->post('/delete_all', function() use ($app) {
+        Car::deleteAll();
+
+        return $app['twig']->render('index.html.twig', array(
+            'cars' => Car::getAll()
+        ));
+    });
+
 
 
     return $app;
