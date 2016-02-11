@@ -36,5 +36,27 @@
         return $app['twig']->render('results.html.twig', array('cars' => $cars_matching_search
         ));
     });
+
+    $app->get("/car_sell", function() use ($app){
+        return $app['twig']->render('sellCar.html.twig', array('result'=> NULL));
+
+    });
+
+    $app->post("/car_sell", function() use ($app){
+        $new_car = new Car($_POST['sell-model'], $_POST['sell-miles'], $_POST['sell-price'], $_POST['sell-photo']);
+        $new_car->save();
+
+        return $app['twig']->render('sellCar.html.twig', array('result'=> "You've done it"));
+
+        // array(
+        //     'message' => array(
+        //         'text' => 'Thanks for adding a car!',
+        //         'type' => 'info'
+        //     )
+        // ));
+    });
+
+
+
     return $app;
 ?>
