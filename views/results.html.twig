@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        {% for car in cars %}
+        <div class="container">
+            <div class="row">
+                <div class='col-md-6'>
+                    <h1> {{ car.getModel }}</h1>
+                </div>
+                <div class='col-md-6'>
+                    <p> {{ car.getPrice }}</p>
+                    <p> {{ car.getMiles }}</p>
+                    <img src= "{{ car.getPhoto }}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+$output = "";
+foreach ($cars_matching_search as $car) {
+    $output = $output . "<div class='row'>
+        <div class='col-md-6'>
+            <h1>" . $car->getModel() . "</h1>
+        </div>
+        <div class='col-md-6'>
+            <p>$" . $car->getPrice() . "</p>
+            <p>" . $car->getMiles() . "</p>
+            <img src=" . $car->getPhoto() . ">
+        </div>
+    </div>
+    ";
+}
