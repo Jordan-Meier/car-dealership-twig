@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+        <title>Places you've been</title>
+    </head>
+    <body>
+        <h1>List of Cars at Dealership</h1>
+        {% if cars is not empty %}
+            <ul>
+                {% for car in cars %}
+                <div class="row">
+                    <div class='col-md-6'>
+                        <h2> {{ car.getModel }}</h2>
+                    </div>
+                    <div class='col-md-6'>
+                        <p> {{ car.getPrice }}</p>
+                        <p> {{ car.getMiles }}</p>
+                        <img src= "{{ car.getPhoto }}">
+                    </div>
+                </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+    </body>
+</html>
