@@ -66,4 +66,6 @@ class Car
         $_SESSION['list_of_cars'] = array();
     }
 
+}    
+
 ?>
