@@ -18,6 +18,10 @@
     ));
 
     //routes
+    $app->get("/", function() use ($app){
+        return $app['twig']->render('index.html.twig')
+        ;
+    });
 
     $app->get("/car_form", function() use ($app){
         return $app['twig']->render('search.html.twig')
@@ -52,6 +56,11 @@
                 'type' => 'info'
             )
         ));
+    });
+
+    $app->get("/car_browse", function() use ($app){
+        return $app['twig']->render('browse_car.html.twig', array('cars'=> Car::getAll()));
+
     });
 
 
