@@ -2,34 +2,21 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/dealership.php";
 
+    session_start();
+    if (empty($_SESSION['list_of_cars'])) {
+        $_SESSION['list_of_cars'] = array();
+    }
+
     $app = new Silex\Application();
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
+        'twig.path' => __DIR__.'/../views'
+    ));
+
+    //routes
 
     $app->get("/car_form", function() {
-        return "
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-                <title>Find your car!</title>
-            </head>
-            <body>
-                <div class='container'>
-                    <h1>Find Your Car!</h1>
-                    <form action='/car_results'>
-                        <div class='form-group'>
-                          <label for='price'>Enter Maximum Price:</label>
-                          <input id='price' name='price' class='form-control' type='number'>
-                        </div>
-                        <div class='form-group'>
-                          <label for='mileage'>Enter Maximum Mileage:</label>
-                          <input id='mileage' name='mileage' class='form-control' type='number'>
-                        </div>
-                        <button type='submit' class='btn-success'>Create</button>
-                    </form>
-                </div>
-            </body>
-        </html>
-        ";
+        return $app['twig']->render('search.html.twig')
+        ;
     });
 
     $app->get("/car_results", function() {
