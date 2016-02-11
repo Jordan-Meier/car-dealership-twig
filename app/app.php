@@ -38,7 +38,7 @@
     });
 
     $app->get("/car_sell", function() use ($app){
-        return $app['twig']->render('sellCar.html.twig', array('result'=> NULL));
+        return $app['twig']->render('sellCar.html.twig', array('message'=> NULL));
 
     });
 
@@ -46,14 +46,12 @@
         $new_car = new Car($_POST['sell-model'], $_POST['sell-miles'], $_POST['sell-price'], $_POST['sell-photo']);
         $new_car->save();
 
-        return $app['twig']->render('sellCar.html.twig', array('result'=> "You've done it"));
-
-        // array(
-        //     'message' => array(
-        //         'text' => 'Thanks for adding a car!',
-        //         'type' => 'info'
-        //     )
-        // ));
+        return $app['twig']->render('sellCar.html.twig', array(
+            'message' => array(
+                'text' => 'Thanks for adding a car!',
+                'type' => 'info'
+            )
+        ));
     });
 
 

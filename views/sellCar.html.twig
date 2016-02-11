@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <title>Add a car!</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Add a Car to Sell!</h1>
+            <form action='/car_sell' method='post'>
+                <div class='form-group'>
+                  <label for='sell-model'>Enter Make/Model:</label>
+                  <input id='sell-model' name='sell-model' class='form-control' type='text'>
+                </div>
+                <div class='form-group'>
+                  <label for='sell-price'>Enter Price:</label>
+                  <input id='sell-price' name='sell-price' class='form-control' type='number'>
+                </div>
+                <div class='form-group'>
+                  <label for='sell-miles'>Enter Mileage:</label>
+                  <input id='sell-miles' name='sell-miles' class='form-control' type='number'>
+                </div>
+                <div class='form-group'>
+                  <label for='sell-photo'>Enter Photo URL:</label>
+                  <input id='sell-photo' name='sell-photo' class='form-control' type='text'>
+                </div>
+                <button type='submit' class='btn-success'>Sell your Car</button>
+            </form>
+
+            {% include 'message.html.twig' %}
+
+        </div>
+    </body>
+</html>
