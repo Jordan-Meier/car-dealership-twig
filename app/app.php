@@ -26,7 +26,6 @@
 
     $app->get("/car_results", function() use ($app){
 
-
         $cars = Car::getAll();
         $cars_matching_search = array();
         foreach ($cars as $car) {
@@ -34,9 +33,8 @@
                 array_push($cars_matching_search, $car);
             }
         }
-
-
+        return $app['twig']->render('results.html.twig', array('cars' => $cars_matching_search
+        ));
     });
-
     return $app;
 ?>
